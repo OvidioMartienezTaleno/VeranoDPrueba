@@ -138,17 +138,11 @@ nav {
   z-index: 999;
 }
 
-button {
-  background: #e74c3c;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 4px;
-  float: right;
-}
-
 p {
   color: #ffffff;
   font-weight: bold;
+}
+
+.h1Steam {
+  text-align: center;
 }

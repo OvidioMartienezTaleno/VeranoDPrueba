@@ -1,5 +1,6 @@
+// src/components/Modal/Modal.tsx
 import React from "react";
-import { Game } from "../types/Game";
+import { Game } from "../../types/Game";
 
 interface ModalProps {
   game: Game;
@@ -17,8 +18,8 @@ const Modal: React.FC<ModalProps> = ({ game, onClose }) => (
       <h3>{game.title}</h3>
       <p>Precio Normal: ${game.normalPrice}</p>
       <p>Precio de oferta: ${game.salePrice}</p>
-      <p className="ahorro">Ahorro de compra: {game.savings}%</p>
       <p>Rating: {game.dealRating}</p>
+      <p className="ahorro">Ahorro: {game.savings}</p>
       <a
         href={`https://www.cheapshark.com/redirect?dealID=${game.dealID}`}
         target="_blank"

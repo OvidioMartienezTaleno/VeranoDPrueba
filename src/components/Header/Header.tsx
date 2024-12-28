@@ -1,4 +1,6 @@
+// src/components/Header/Header.tsx
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header: React.FC = () => (
   <header>
@@ -7,13 +9,16 @@ const Header: React.FC = () => (
     <nav>
       <ul className="nav-links">
         <li>
-          <a href="#search">Buscar</a>
+          <Link to="/">Inicio</Link>
         </li>
         <li>
-          <a href="#stores">Tiendas</a>
+          <Link to="/search">Buscar</Link>
         </li>
         <li>
-          <a href="#full-list">Lista Completa</a>
+          <Link to="/stores">Tiendas</Link>
+        </li>
+        <li>
+          <Link to="/full-list">Lista Completa</Link>
         </li>
       </ul>
     </nav>

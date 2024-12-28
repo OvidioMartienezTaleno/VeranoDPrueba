@@ -1,5 +1,6 @@
+// src/components/GameCard/GameCard.tsx
 import React from "react";
-import { Game } from "../types/Game";
+import { Game } from "../../types/Game";
 
 interface GameCardProps {
   game: Game;

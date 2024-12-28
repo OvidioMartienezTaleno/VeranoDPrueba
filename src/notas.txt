@@ -175,10 +175,10 @@ src
     import GamesList from "./components/GamesList";
     import Modal from "./components/Modal";
     import { Game } from "./types/Game";
-    import "./App.css";
 
     const App: React.FC = () => {
     const [games, setGames] = useState<Game[]>([]);
+
     const [selectedGame, setSelectedGame] = useState<Game | null>(null);
 
     useEffect(() => {
@@ -193,7 +193,7 @@ src
         if (data.length) {
             setGames(data);
         } else {
-            console.error("Error fetching data:", data);
+            console.error(`error`, data);
         }
         } catch (error) {
         console.error("Error fetching data:", error);
@@ -215,20 +215,24 @@ src
     );
     };
 
+    export default App;
+
+
 
 
 
  main.tsx:
     import React from "react";
-    import ReactDOM from "react-dom";
-    import "./App.css";
+    import { createRoot } from "react-dom/client";
     import App from "./App";
+    import "./App.css";
 
-    ReactDOM.render(
+    const container = document.getElementById("root");
+    const root = createRoot(container!);
+
+    root.render(
     <React.StrictMode>
         <App />
-    </React.StrictMode>,
-    document.getElementById("root")
+    </React.StrictMode>
     );
-
  
