@@ -78,14 +78,14 @@ nav {
 
 .game p {
   font-size: 1rem;
-  color: #e1e1e1;
+  color: #ff0000;
   margin: 5px 0;
   font-weight: bold;
 }
 
 .game .price {
   font-size: 1.1rem;
-  color: #e74c3c;
+  color: #1df600;
   font-weight: bold;
 }
 
