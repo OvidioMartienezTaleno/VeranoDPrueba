@@ -124,6 +124,10 @@ nav {
   float: right;
 }
 
+.ahorro {
+  color: rgb(25, 0, 255);
+}
+
 .overlay {
   position: fixed;
   top: 0;

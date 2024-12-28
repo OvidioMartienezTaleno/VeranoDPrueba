@@ -1,0 +1,234 @@
+src
+    components:
+        Card.tsx:
+        import { ReactNode } from "react";
+
+        interface Props {
+        children: ReactNode;
+        }
+
+        function Card(props: Props) {
+        const { children } = props;
+        return (
+            <div
+            className="card"
+            style={{
+                width: "350px",
+            }}
+            >
+            <div className="card-body">{children}</div>
+            </div>
+        );
+        }
+
+        interface CardBodyProps {
+        title: string;
+        text?: string;
+        }
+
+        export function CardBody(props: CardBodyProps) {
+        const { title, text } = props;
+        return (
+            <>
+            <h5 className="card-title">{title}</h5>
+            <p className="card-text">{text}</p>
+            </>
+        );
+        }
+
+        export default Card;
+
+
+
+
+        GameCard.tsx:
+        import React from "react";
+        import { Game } from "../types/Game";
+
+        interface GameCardProps {
+        game: Game;
+        onClick: () => void;
+        }
+
+        const GameCard: React.FC<GameCardProps> = ({ game, onClick }) => (
+        <div className="game" onClick={onClick}>
+            <img src={game.thumb} alt={game.title} />
+            <h3>{game.title}</h3>
+            <p>Precio Normal: ${game.normalPrice}</p>
+            <p className="price">Precio de oferta: ${game.salePrice}</p>
+        </div>
+        );
+
+        export default GameCard;
+
+
+
+
+        GamesList.tsx:
+        import React from "react";
+        import GameCard from "./GameCard";
+        import { Game } from "../types/Game";
+
+        interface GamesListProps {
+        games: Game[];
+        onGameClick: (game: Game) => void;
+        }
+
+        const GamesList: React.FC<GamesListProps> = ({ games, onGameClick }) => (
+        <div className="games-list">
+            {games.map((game) => (
+            <GameCard
+                key={game.dealID}
+                game={game}
+                onClick={() => onGameClick(game)}
+            />
+            ))}
+        </div>
+        );
+
+        export default GamesList;
+
+
+
+
+        Header.tsx:
+        import React from "react";
+
+        const Header: React.FC = () => (
+        <header>
+            <h1>Game Saver Central</h1>
+            <p>Encuentra las mejores ofertas!</p>
+            <nav>
+            <ul className="nav-links">
+                <li>
+                <a href="#search">Buscar</a>
+                </li>
+                <li>
+                <a href="#stores">Tiendas</a>
+                </li>
+                <li>
+                <a href="#full-list">Lista Completa</a>
+                </li>
+            </ul>
+            </nav>
+        </header>
+        );
+
+        export default Header;
+
+
+
+
+        Modal.tsx:
+        import React from "react";
+        import { Game } from "../types/Game";
+
+        interface ModalProps {
+        game: Game;
+        onClose: () => void;
+        }
+
+        const Modal: React.FC<ModalProps> = ({ game, onClose }) => (
+        <>
+            <div className="overlay" onClick={onClose}></div>
+            <div className="modal">
+            <button className="modal-close" onClick={onClose}>
+                X
+            </button>
+            <img src={game.thumb} alt={game.title} />
+            <h3>{game.title}</h3>
+            <p>Precio Normal: ${game.normalPrice}</p>
+            <p>Precio de oferta: ${game.salePrice}</p>
+            <a
+                href={`https://www.cheapshark.com/redirect?dealID=${game.dealID}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button"
+            >
+                Ver Oferta
+            </a>
+            </div>
+        </>
+        );
+
+        export default Modal;
+
+
+
+
+    type:
+        Games.tsx:
+        export interface Game {
+        dealID: string;
+        title: string;
+        normalPrice: string;
+        salePrice: string;
+        thumb: string;
+        dealRating: string;
+        }
+
+
+
+ App.tsx:
+    import React, { useState, useEffect } from "react";
+    import Header from "./components/Header";
+    import GamesList from "./components/GamesList";
+    import Modal from "./components/Modal";
+    import { Game } from "./types/Game";
+    import "./App.css";
+
+    const App: React.FC = () => {
+    const [games, setGames] = useState<Game[]>([]);
+    const [selectedGame, setSelectedGame] = useState<Game | null>(null);
+
+    useEffect(() => {
+        fetchGames();
+    }, []);
+
+    const fetchGames = async () => {
+        const apiUrl = `https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15`;
+        try {
+        const response = await fetch(apiUrl);
+        const data: Game[] = await response.json();
+        if (data.length) {
+            setGames(data);
+        } else {
+            console.error("Error fetching data:", data);
+        }
+        } catch (error) {
+        console.error("Error fetching data:", error);
+        }
+    };
+
+    return (
+        <div className="App">
+        <Header />
+        <p className="appp">Lo mejor de Steam</p>
+        <div className="container">
+            <GamesList games={games} onGameClick={setSelectedGame} />
+        </div>
+
+        {selectedGame && (
+            <Modal game={selectedGame} onClose={() => setSelectedGame(null)} />
+        )}
+        </div>
+    );
+    };
+
+
+
+
+ main.tsx:
+    import React from "react";
+    import ReactDOM from "react-dom";
+    import "./App.css";
+    import App from "./App";
+
+    ReactDOM.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+    document.getElementById("root")
+    );
+
+ 

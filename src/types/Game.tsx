@@ -5,4 +5,5 @@ export interface Game {
   salePrice: string;
   thumb: string;
   dealRating: string;
+  savings: string;
 }
