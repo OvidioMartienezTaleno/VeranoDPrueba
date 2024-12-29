@@ -152,16 +152,16 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh; /* Ocupa toda la altura de la pantalla */
+  height: 50vh;
   flex-direction: column;
-  gap: 20px; /* Espacio entre los elementos */
+  gap: 20px;
 }
 
 /* Estilo para el input */
 .search-container input {
   padding: 10px;
   font-size: 16px;
-  border: 2px solid #007bff; /* Borde azul */
+  border: 2px solid #007bff;
   border-radius: 4px;
   width: 300px;
 }
@@ -169,16 +169,16 @@ p {
 /* Estilo para el botón */
 .search-container button {
   padding: 10px 20px;
-  background-color: #007bff; /* Fondo azul */
+  background-color: #007bff;
   color: white;
-  border: 2px solid #007bff; /* Borde azul */
+  border: 2px solid #007bff;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
 }
 
 .search-container button:hover {
-  background-color: #0056b3; /* Fondo más oscuro cuando se pasa el cursor */
+  background-color: #0056b3;
   border-color: #0056b3;
 }
 
@@ -211,8 +211,8 @@ p {
 }
 
 .game-logo {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   margin-right: 15px;
 }
 
@@ -263,4 +263,37 @@ p {
 .store-logo-img {
   width: 50px;
   height: 50px;
+}
+
+/* Media Queries para hacer responsivo */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .games-list {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .search-container input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .game-logo {
+    margin: 0 auto 10px;
+  }
 }
