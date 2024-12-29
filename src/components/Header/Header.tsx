@@ -12,7 +12,7 @@ const Header: React.FC = () => (
           <Link to="/">Inicio</Link>
         </li>
         <li>
-          <Link to="/search">Buscar</Link>
+          <Link to="/search">Buscar</Link>{" "}
         </li>
         <li>
           <Link to="/stores">Tiendas</Link>

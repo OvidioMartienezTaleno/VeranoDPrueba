@@ -6,4 +6,6 @@ export interface Game {
   thumb: string;
   dealRating: string;
   savings: string;
+  storeID: string;
+  storeBanner?: string;
 }

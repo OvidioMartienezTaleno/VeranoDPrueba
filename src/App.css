@@ -146,3 +146,45 @@ p {
 .h1Steam {
   text-align: center;
 }
+
+/* Centrar el contenido en la página */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* Ocupa toda la altura de la pantalla */
+  flex-direction: column;
+  gap: 20px; /* Espacio entre los elementos */
+}
+
+/* Estilo para el input */
+.search-container input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #007bff; /* Borde azul */
+  border-radius: 4px;
+  width: 300px;
+}
+
+/* Estilo para el botón */
+.search-container button {
+  padding: 10px 20px;
+  background-color: #007bff; /* Fondo azul */
+  color: white;
+  border: 2px solid #007bff; /* Borde azul */
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.search-container button:hover {
+  background-color: #0056b3; /* Fondo más oscuro cuando se pasa el cursor */
+  border-color: #0056b3;
+}
+
+/* Estilo general de la página */
+.search-container h2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}

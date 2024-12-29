@@ -1,4 +1,3 @@
-// src/App.tsx
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
@@ -6,6 +5,7 @@ import Home from "./pages/Home";
 import Modal from "./components/Modal/Modal";
 import { Game } from "./types/Game";
 import { fetchGames } from "./services/api"; // Función que obtiene los juegos desde la API
+import SearchPage from "./pages/SearchPage"; // Importa la nueva página
 
 const App: React.FC = () => {
   const [games, setGames] = useState<Game[]>([]);
@@ -28,7 +28,8 @@ const App: React.FC = () => {
             path="/"
             element={<Home games={games} onGameClick={setSelectedGame} />}
           />
-          {/* Puedes agregar más rutas aquí si tienes más páginas */}
+          <Route path="/search" element={<SearchPage />} />{" "}
+          {/* Ruta para la página de búsqueda */}
         </Routes>
 
         {selectedGame && (
