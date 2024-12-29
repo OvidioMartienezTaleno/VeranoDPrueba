@@ -223,6 +223,7 @@ p {
 .game-title {
   margin: 0 0 5px;
   font-size: 18px;
+  color: #1df600;
 }
 
 .game-price {
@@ -257,4 +258,9 @@ p {
   height: 50px;
   margin-left: 10px;
   object-fit: contain;
+}
+
+.store-logo-img {
+  width: 50px;
+  height: 50px;
 }
