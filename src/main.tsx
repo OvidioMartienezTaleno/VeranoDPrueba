@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./components/i18n";
 import App from "./App";
 
 // Usamos createRoot en lugar de render

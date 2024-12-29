@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Header from "./components/Header/Header";
 import Home from "./pages/Home";
 import Modal from "./components/Modal/Modal";
@@ -8,6 +9,7 @@ import { fetchGames } from "./services/api"; // Función que obtiene los juegos 
 import SearchPage from "./pages/SearchPage"; // Importa la nueva página
 
 const App: React.FC = () => {
+  const { t, i18n } = useTranslation();
   const [games, setGames] = useState<Game[]>([]);
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
 
@@ -19,10 +21,28 @@ const App: React.FC = () => {
     getGames();
   }, []);
 
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
+
   return (
     <Router>
       <div className="App">
         <Header />
+        <div className="language-switcher">
+          <button
+            onClick={() => changeLanguage("en")}
+            className="language-button"
+          >
+            English
+          </button>
+          <button
+            onClick={() => changeLanguage("es")}
+            className="language-button"
+          >
+            Español
+          </button>
+        </div>
         <Routes>
           <Route
             path="/"

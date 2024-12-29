@@ -10,7 +10,7 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ games, onGameClick }) => (
   <div className="home-page">
-    <h1 className="h1Steam">Lo mejor de Steam</h1>
+    <h1 className="h1Steam">The best of Steam</h1>
     <GamesList games={games} onGameClick={onGameClick} />
   </div>
 );

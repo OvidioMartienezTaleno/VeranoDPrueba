@@ -297,3 +297,58 @@ p {
     margin: 0 auto 10px;
   }
 }
+
+.language-switcher {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.language-button {
+  background-color: #007bff; /* Fondo azul */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Espaciado interno */
+  margin: 0 10px; /* Margen entre botones */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de mano */
+  font-size: 16px; /* Tamaño de fuente */
+}
+
+.language-button:hover {
+  background-color: #0056b3; /* Fondo más oscuro al pasar el cursor */
+}
+
+.language-switcher {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.language-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.language-button:hover {
+  background-color: #0056b3;
+}
+
+/* Media Queries para hacer responsivo */
+@media (max-width: 768px) {
+  .language-switcher {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .language-button {
+    width: 100%;
+    margin: 10px 0;
+  }
+}

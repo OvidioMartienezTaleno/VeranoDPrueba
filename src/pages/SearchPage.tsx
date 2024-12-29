@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../App.css";
+import { useTranslation } from "react-i18next";
 
 interface Game {
   dealID: string;
@@ -13,6 +14,7 @@ interface Game {
 }
 
 const SearchPage: React.FC = () => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState<string>(""); // Término de búsqueda
   const [games, setGames] = useState<Game[]>([]); // Resultados de la búsqueda
   const [loading, setLoading] = useState<boolean>(false); // Estado de carga
@@ -24,7 +26,7 @@ const SearchPage: React.FC = () => {
 
   const handleSearch = async () => {
     if (!searchTerm.trim()) {
-      setError("El término de búsqueda no puede estar vacío.");
+      setError(t("searchEmptyError"));
       return;
     }
 
@@ -37,7 +39,7 @@ const SearchPage: React.FC = () => {
         `https://www.cheapshark.com/api/1.0/deals?upperPrice=15&title=${searchTerm}`
       );
       if (!response.ok) {
-        throw new Error("Error al obtener los datos de la API.");
+        throw new Error(t("apiFetchError"));
       }
 
       const data: Game[] = await response.json();
@@ -56,7 +58,7 @@ const SearchPage: React.FC = () => {
 
       setGames(enrichedData); // Guardar los resultados en el estado
     } catch (err) {
-      setError("Hubo un problema al buscar los juegos. Intenta nuevamente.");
+      setError(t("searchFetchError"));
     } finally {
       setLoading(false); // Terminar el estado de carga
     }
@@ -64,19 +66,19 @@ const SearchPage: React.FC = () => {
 
   return (
     <div className="search-container">
-      <h2>Buscar Juegos</h2>
+      <h2>{t("searchGames")}</h2>
       <input
         type="text"
-        placeholder="Escribe para buscar..."
+        placeholder={t("searchPlaceholder")}
         value={searchTerm}
         onChange={handleSearchChange}
-        aria-label="Campo de búsqueda de juegos"
+        aria-label={t("searchField")}
       />
-      <button onClick={handleSearch} aria-label="Botón para buscar juegos">
-        Buscar
+      <button onClick={handleSearch} aria-label={t("searchButton")}>
+        {t("search")}
       </button>
       {error && <p style={{ color: "red" }}>{error}</p>}
-      {loading && <p>Cargando...</p>}
+      {loading && <p>{t("loading")}</p>}
       <div className="results">
         {games.map((game) => (
           <div key={game.dealID} className="game-card">
@@ -84,16 +86,17 @@ const SearchPage: React.FC = () => {
             <div className="game-details">
               <h3 className="game-title">{game.title}</h3>
               <p className="game-price">
-                Precio Normal: <strong>${game.normalPrice}</strong>
+                {t("normalPrice")}: <strong>${game.normalPrice}</strong>
               </p>
               <p className="game-price">
-                Precio más barato: <strong>${game.salePrice}</strong>
+                {t("salePrice")}: <strong>${game.salePrice}</strong>
               </p>
               <p className="game-price">
-                Ahorro: <strong>{parseFloat(game.savings).toFixed(2)}%</strong>
+                {t("savings")}:{" "}
+                <strong>{parseFloat(game.savings).toFixed(2)}%</strong>
               </p>
               <p className="game-store">
-                Tienda: <strong>{game.storeName}</strong>
+                {t("store")}: <strong>{game.storeName}</strong>
               </p>
             </div>
             <a
@@ -102,7 +105,7 @@ const SearchPage: React.FC = () => {
               rel="noopener noreferrer"
               className="game-link"
             >
-              Ver Oferta
+              {t("viewDeal")}
             </a>
           </div>
         ))}
