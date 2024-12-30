@@ -10,7 +10,7 @@ i18n
     resources: {
       en: {
         translation: {
-          welcome: "Welcome to Game Saver Central",
+          welcome: "Game Saver Central",
           description: "Find the best deals!",
           home: "Home",
           search: "Search",
@@ -35,7 +35,7 @@ i18n
       },
       es: {
         translation: {
-          welcome: "Bienvenido a Game Saver Central",
+          welcome: "Game Saver Central",
           description: "¡Encuentra las mejores ofertas!",
           home: "Inicio",
           search: "Buscar",

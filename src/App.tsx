@@ -9,7 +9,7 @@ import { fetchGames } from "./services/api"; // Función que obtiene los juegos 
 import SearchPage from "./pages/SearchPage"; // Importa la nueva página
 
 const App: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const [games, setGames] = useState<Game[]>([]);
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
 
