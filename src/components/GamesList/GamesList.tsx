@@ -1,6 +1,7 @@
+// src/components/GamesList/GamesList.tsx
 import React from "react";
-import GameCard from "./GameCard";
-import { Game } from "../types/Game";
+import GameCard from "../GameCard/GameCard";
+import { Game } from "../../types/Game";
 
 interface GamesListProps {
   games: Game[];
