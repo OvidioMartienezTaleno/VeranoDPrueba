@@ -1,47 +1,62 @@
 import React, { useState, useEffect } from "react";
-import Header from "./components/Header";
-import GamesList from "./components/GamesList";
-import Modal from "./components/Modal";
-//import Button from "./components/Button";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import Header from "./components/Header/Header";
+import Home from "./pages/Home";
+import Modal from "./components/Modal/Modal";
 import { Game } from "./types/Game";
-import "./App.css";
+import { fetchGames } from "./services/api"; // Función que obtiene los juegos desde la API
+import SearchPage from "./pages/SearchPage"; // Importa la nueva página
 
 const App: React.FC = () => {
+  const { i18n } = useTranslation();
   const [games, setGames] = useState<Game[]>([]);
-
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
 
   useEffect(() => {
-    fetchGames();
+    const getGames = async () => {
+      const data = await fetchGames();
+      setGames(data);
+    };
+    getGames();
   }, []);
 
-  const fetchGames = async () => {
-    const apiUrl = `https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15`;
-    try {
-      const response = await fetch(apiUrl);
-      const data: Game[] = await response.json();
-      if (data.length) {
-        setGames(data);
-      } else {
-        console.error(`error`, data);
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
   };
 
   return (
-    <div className="App">
-      <Header />
-      <p className="appp">Lo mejor de Steam</p>
-      <div className="container">
-        <GamesList games={games} onGameClick={setSelectedGame} />
-      </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <div className="language-switcher">
+          <button
+            onClick={() => changeLanguage("en")}
+            className="language-button"
+          >
+            English
+          </button>
+          <button
+            onClick={() => changeLanguage("es")}
+            className="language-button"
+          >
+            Español
+          </button>
+        </div>
+        <Routes>
+          <Route
+            path="/"
+            element={<Home games={games} onGameClick={setSelectedGame} />}
+          />
+          <Route path="/search" element={<SearchPage />} />{" "}
+          {/* Ruta para la página de búsqueda */}
+        </Routes>
 
-      {selectedGame && (
-        <Modal game={selectedGame} onClose={() => setSelectedGame(null)} />
-      )}
-    </div>
+        {selectedGame && (
+          <Modal game={selectedGame} onClose={() => setSelectedGame(null)} />
+        )}
+      </div>
+    </Router>
   );
 };
 
