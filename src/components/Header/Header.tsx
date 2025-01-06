@@ -23,6 +23,9 @@ const Header: React.FC = () => {
           <li>
             <Link to="/full-list">{t("fullList")}</Link>
           </li>
+          <li>
+            <Link to="/search-games">{t("searchDetailsGames")}</Link>
+          </li>
         </ul>
       </nav>
     </header>
