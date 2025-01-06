@@ -9,7 +9,7 @@ import { fetchGames } from "./services/api"; // Función que obtiene los juegos 
 import SearchPage from "./pages/SearchPage"; // Importa la nueva página
 import SearchGames from "./pages/SearchGames"; // Importa la página de búsqueda de juegos
 import Stores from "./pages/Stores";
-
+import ListStores from "./pages/ListStores";
 
 const App: React.FC = () => {
   const { i18n } = useTranslation();
@@ -52,9 +52,12 @@ const App: React.FC = () => {
             element={<Home games={games} onGameClick={setSelectedGame} />}
           />
           <Route path="/search" element={<SearchPage />} />{" "}
-          {/* Ruta para la página de búsqueda */}
-          <Route path="/search-games" element={<SearchGames />} /> {/* Ruta para buscar juegos */}
-          <Route path="/stores" element={<Stores />} /> {/* Ruta para buscar juegos por tiendas*/}
+          {/* Ruta para la página de búsqueda */}z
+          <Route path="/search-games" element={<SearchGames />} />{" "}
+          {/* Ruta para buscar juegos */}
+          <Route path="/stores" element={<Stores />} />{" "}
+          {/* Ruta para buscar juegos por tiendas*/}
+          <Route path="/full-list" element={<ListStores />} />{" "}
         </Routes>
 
         {selectedGame && (

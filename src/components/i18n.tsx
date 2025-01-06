@@ -55,7 +55,8 @@ i18n
           seachStore: "Search Videogames by Stores",
           allStores: "All Stores",
           price: "Price:",
-          noGames:"There are no Videogames."
+          noGames: "There are no Videogames.",
+          visit: "Visit",
         },
       },
       es: {
@@ -82,8 +83,6 @@ i18n
           viewDeal: "Ver Oferta",
           rating: "Calificación",
 
-
-          
           searchDetailsGames: "Buscar Juegos",
           unknownStore: "Tienda Desconocida",
           searchBarGames: "Buscar videojuegos (Ej: Cyberpunk, Mario)...",
@@ -104,11 +103,11 @@ i18n
           noRating: "Rating no disponible",
           noReviews: "No hay reseñas disponibles",
 
-
           seachStore: "Buscar juegos por Tiendas",
           allStores: "Todas las tiendas",
           price: "Precio:",
-          noGames:"No hay juegos."
+          noGames: "No hay juegos.",
+          visit: "Visitar",
         },
       },
     },
