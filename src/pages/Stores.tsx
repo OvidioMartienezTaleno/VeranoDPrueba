@@ -72,6 +72,12 @@ const Stores: React.FC = () => {
     }
   };
 
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === 'Enter') {
+        handleSearch();
+      }
+    };
+
   return (
     <div className="store-filter-container">
       <h2 className="store-filter-h2">{t("seachStore")}</h2>  
@@ -82,6 +88,7 @@ const Stores: React.FC = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="store-filter-input"
+          onKeyPress={handleKeyPress}
         />
         <select
           value={selectedStore}
