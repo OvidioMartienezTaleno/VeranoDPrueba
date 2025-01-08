@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './SearchGames.css';
+import React, { useState } from "react";
+import "./SearchGames.css";
 import { useTranslation } from "react-i18next";
 //import "../App.css";
 
@@ -38,7 +38,7 @@ interface GameDeal {
 
 const SearchGames: React.FC = () => {
   const { t } = useTranslation();
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [games, setGames] = useState<Game[]>([]);
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
   const [details, setDetails] = useState<GameDetails | null>(null);
@@ -54,7 +54,11 @@ const SearchGames: React.FC = () => {
     setError(null);
 
     try {
-      const response = await fetch(`https://www.cheapshark.com/api/1.0/games?title=${encodeURIComponent(searchQuery)}`);
+      const response = await fetch(
+        `https://www.cheapshark.com/api/1.0/games?title=${encodeURIComponent(
+          searchQuery
+        )}`
+      );
       if (!response.ok) {
         throw new Error(t("apiFetchError"));
       }
@@ -64,7 +68,7 @@ const SearchGames: React.FC = () => {
         setError(t("noGame"));
       }
     } catch (error) {
-      console.error('Error fetching games:', error);
+      console.error("Error fetching games:", error);
       setError(t("searchFetchError"));
     } finally {
       setIsLoading(false);
@@ -78,7 +82,9 @@ const SearchGames: React.FC = () => {
     setError(null);
 
     try {
-      const gameResponse = await fetch(`https://www.cheapshark.com/api/1.0/games?id=${game.gameID}`);
+      const gameResponse = await fetch(
+        `https://www.cheapshark.com/api/1.0/games?id=${game.gameID}`
+      );
       if (!gameResponse.ok) {
         throw new Error(t("apiFetchError"));
       }
@@ -86,45 +92,51 @@ const SearchGames: React.FC = () => {
       const cheapSharkData: GameDetails = await gameResponse.json();
 
       if (game.cheapestDealID) {
-        const dealResponse = await fetch(`https://www.cheapshark.com/api/1.0/deals?id=${game.cheapestDealID}`);
+        const dealResponse = await fetch(
+          `https://www.cheapshark.com/api/1.0/deals?id=${game.cheapestDealID}`
+        );
         if (dealResponse.ok) {
           const dealData = await dealResponse.json();
           if (dealData.gameInfo) {
-            cheapSharkData.info.steamRatingPercent = dealData.gameInfo.steamRatingPercent;
-            cheapSharkData.info.steamRatingText = dealData.gameInfo.steamRatingText;
+            cheapSharkData.info.steamRatingPercent =
+              dealData.gameInfo.steamRatingPercent;
+            cheapSharkData.info.steamRatingText =
+              dealData.gameInfo.steamRatingText;
           }
         }
       }
 
       const storeNamesMap: { [key: string]: string } = {
-        '1': 'Steam',
-        '2': 'GamersGate',
-        '3': 'GreenManGaming',
-        '4': 'Amazon',
-        '5': 'GameStop',
-        '6': 'Direct2Drive',
-        '7': 'GOG',
-        '8': 'Origin',
-        '9': 'Get Games',
-        '10': 'Shiny Loot',
-        '11': 'Humble Store',
-        '15': 'Fanatical',
-        '25': 'Epic Games Store',
-        '27': 'Gamesplanet',
-        '30': 'IndieGala',
-        '31': 'Blizzard Shop',
+        "1": "Steam",
+        "2": "GamersGate",
+        "3": "GreenManGaming",
+        "4": "Amazon",
+        "5": "GameStop",
+        "6": "Direct2Drive",
+        "7": "GOG",
+        "8": "Origin",
+        "9": "Get Games",
+        "10": "Shiny Loot",
+        "11": "Humble Store",
+        "15": "Fanatical",
+        "25": "Epic Games Store",
+        "27": "Gamesplanet",
+        "30": "IndieGala",
+        "31": "Blizzard Shop",
       };
 
-      cheapSharkData.deals = cheapSharkData.deals.map(deal => ({
+      cheapSharkData.deals = cheapSharkData.deals.map((deal) => ({
         ...deal,
         storeName: storeNamesMap[deal.storeID] || t("unknownStore"),
-        savings: deal.savings ? `${Math.round(parseFloat(deal.savings))}%` : '0%',
+        savings: deal.savings
+          ? `${Math.round(parseFloat(deal.savings))}%`
+          : "0%",
       }));
 
       console.log(t("detailGame"), cheapSharkData);
       setDetails(cheapSharkData);
     } catch (error) {
-      console.error('Error fetching game details:', error);
+      console.error("Error fetching game details:", error);
       setError(t("detailError"));
     } finally {
       setIsLoading(false);
@@ -136,7 +148,7 @@ const SearchGames: React.FC = () => {
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       handleSearch();
     }
   };
@@ -160,32 +172,40 @@ const SearchGames: React.FC = () => {
               <div className="game_ratings">
                 {details.info.steamRatingText && (
                   <p className="rating">
-                    <strong>{t("rating")}</strong> {details.info.steamRatingText}
+                    <strong>{t("rating")}</strong>{" "}
+                    {details.info.steamRatingText}
                   </p>
                 )}
                 {details.info.steamRatingPercent && (
                   <p className="reviews">
-                    <strong>{t("reviews")}</strong> {details.info.steamRatingPercent}% positivas
+                    <strong>{t("reviews")}</strong>{" "}
+                    {details.info.steamRatingPercent}% positivas
                   </p>
                 )}
-                {!details.info.steamRatingText && !details.info.steamRatingPercent && (
-                  <>
-                    <p className="rating">
-                      <strong>{t("rating")}</strong> {t("noRating")}
-                    </p>
-                    <p className="reviews">
-                      <strong>{t("reviews")}</strong> {t("noReviews")}
-                    </p>
-                  </>
-                )}
+                {!details.info.steamRatingText &&
+                  !details.info.steamRatingPercent && (
+                    <>
+                      <p className="rating">
+                        <strong>{t("rating")}</strong> {t("noRating")}
+                      </p>
+                      <p className="reviews">
+                        <strong>{t("reviews")}</strong> {t("noReviews")}
+                      </p>
+                    </>
+                  )}
               </div>
               <div className="price_record">
                 <h3>{t("record")}</h3>
                 {details.cheapestPriceEver && (
-                  <p>{t("lowestPrice")}{formatPrice(details.cheapestPriceEver.price)}</p>
+                  <p>
+                    {t("lowestPrice")}
+                    {formatPrice(details.cheapestPriceEver.price)}
+                  </p>
                 )}
                 {details.deals?.[0]?.price && (
-                  <p>{t("bestPrice")} {formatPrice(details.deals[0].price)}</p>
+                  <p>
+                    {t("bestPrice")} {formatPrice(details.deals[0].price)}
+                  </p>
                 )}
               </div>
               <div className="stores">
@@ -199,8 +219,11 @@ const SearchGames: React.FC = () => {
                         </p>
                         <p className="store_price">
                           {formatPrice(deal.price)}
-                          {deal.savings && deal.savings !== '0%' && (
-                            <span className="savings_tag"> (-{deal.savings})</span>
+                          {deal.savings && deal.savings !== "0%" && (
+                            <span className="savings_tag">
+                              {" "}
+                              (-{deal.savings})
+                            </span>
                           )}
                         </p>
                         <a
@@ -248,8 +271,12 @@ const SearchGames: React.FC = () => {
                 <div className="game_card" key={game.gameID}>
                   <img src={game.thumb} alt={game.external} />
                   <h3>{game.external}</h3>
-                  <p className="price">{t("from")} {formatPrice(game.cheapest)}</p>
-                  <button onClick={() => handleViewDetails(game)}>{t("seeDetails")}</button>
+                  <p className="price">
+                    {t("from")} {formatPrice(game.cheapest)}
+                  </p>
+                  <button onClick={() => handleViewDetails(game)}>
+                    {t("seeDetails")}
+                  </button>
                 </div>
               ))}
             </div>

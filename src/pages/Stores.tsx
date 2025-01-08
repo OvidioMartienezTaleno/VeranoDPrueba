@@ -18,7 +18,7 @@ interface Store {
 }
 
 const Stores: React.FC = () => {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStore, setSelectedStore] = useState("");
   const [games, setGames] = useState<Game[]>([]);
@@ -73,14 +73,14 @@ const Stores: React.FC = () => {
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-      if (event.key === 'Enter') {
-        handleSearch();
-      }
-    };
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
 
   return (
     <div className="store-filter-container">
-      <h2 className="store-filter-h2">{t("seachStore")}</h2>  
+      <h2 className="store-filter-h2">{t("seachStore")}</h2>
       <div className="store-filter-bar">
         <input
           type="text"
@@ -103,21 +103,20 @@ const Stores: React.FC = () => {
           ))}
         </select>
         <button onClick={handleSearch} className="store-filter-button">
-        {t("searchButton")}
+          {t("searchButton")}
         </button>
       </div>
       <div className="store-results">
         {loading && <p>{t("loading")}</p>}
         {error && <p className="error-message">{error}</p>}
-        {games.length === 0 && !loading && !error && (
-          <p>{t("noGames")}</p>   
-        )}
+        {games.length === 0 && !loading && !error && <p>{t("noGames")}</p>}
         {games.map((game) => (
           <div key={game.gameID} className="game-item">
             <img src={game.thumb} alt={game.title} className="game-thumb" />
             <h3>{game.title}</h3>
             <p>
-              {t("price")}<strong>${game.salePrice}</strong>{" "}
+              {t("price")}
+              <strong>${game.salePrice}</strong>{" "}
               <span className="normal-price">(${game.normalPrice})</span>
             </p>
             <a

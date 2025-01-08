@@ -1,5 +1,5 @@
 /* Estilo general del contenedor */
-.search_games_container  {
+.search_games_container {
   padding: 0 15px;
   color: #f1f1f1; /* Texto claro */
   border-radius: 15px;
@@ -10,16 +10,14 @@
   align-items: center;
 
   justify-content: center;
-  
-
 
   height: 10vh;
   gap: 20px;
 }
 
 .search_games_h2 {
-  color:#ddd;
-  text-align: center
+  color: #ddd;
+  text-align: center;
 }
 
 .overlay {
@@ -40,11 +38,10 @@
   margin-bottom: 20px;
   width: 100%;
   max-width: 700px;
-  
 }
 
 .search_bar input {
-  flex: 1;  
+  flex: 1;
   width: 80%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -107,7 +104,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 400px; /* Altura fija para las tarjetas */
-  width: 240px;  /* Ancho fijo para las tarjetas */
+  width: 240px; /* Ancho fijo para las tarjetas */
   overflow: hidden; /* Para evitar que el contenido se desborde */
 }
 
@@ -140,7 +137,6 @@
 
 .price_record {
   color: #7baeff;
-
 }
 
 /* Estilo del botón dentro de la tarjeta */
@@ -169,10 +165,10 @@
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;  /* Centra el contenido horizontalmente */
-  justify-content: center;  /* Centra el contenido verticalmente */
+  align-items: center; /* Centra el contenido horizontalmente */
+  justify-content: center; /* Centra el contenido verticalmente */
   width: 100%;
-  text-align: center;  /* Asegura que el texto esté centrado */
+  text-align: center; /* Asegura que el texto esté centrado */
   color: #7baeff;
 }
 
@@ -199,10 +195,10 @@
 }
 
 .game_image {
-  max-width: 80%;   /* Limita el ancho máximo a un 80% del contenedor */
+  max-width: 80%; /* Limita el ancho máximo a un 80% del contenedor */
   max-height: 450px; /* Limita la altura máxima a 500px */
-  width: auto;      /* Mantiene la relación de aspecto */
-  height: auto;     /* Mantiene la relación de aspecto */
+  width: auto; /* Mantiene la relación de aspecto */
+  height: auto; /* Mantiene la relación de aspecto */
   margin-bottom: 15px;
 }
 
@@ -219,9 +215,8 @@
   width: 100%;
 }
 
-.stores{
+.stores {
   color: #7baeff;
-
 }
 
 .store_item {

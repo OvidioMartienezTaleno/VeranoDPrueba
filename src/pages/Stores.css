@@ -1,97 +1,95 @@
 .store-filter-container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: auto;
-  }
-  
-  .store-filter-h2 {
-    color:#ddd;
-    text-align: center
-  }
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
 
-  .store-filter-bar {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .store-filter-input {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
-  }
-  
-  .store-filter-select {
-    padding: 10px;
-    font-size: 16px;
-  }
-  
-  .store-filter-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .store-filter-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .store-results {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    color: #007bff;
-  }
-  
-  .game-item {
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transition: transform 0.2s;
-  }
-  
-  .game-item:hover {
-    transform: scale(1.05);
-  }
-  
-  .game-thumb {
-    max-width: 100px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .game-title {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    
-  }
-  
-  .normal-price {
-    text-decoration: line-through;
-    color: #999;
-  }
-  
-  .game-link {
-    color: #1df600;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  
-  .game-link:hover {
-    color: #aaf0a0;
-  }
-  
-  .error-message {
-    color: red;
-    font-weight: bold;
-  }
-  
+.store-filter-h2 {
+  color: #ddd;
+  text-align: center;
+}
+
+.store-filter-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.store-filter-input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.store-filter-select {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.store-filter-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.store-filter-button:hover {
+  background-color: #0056b3;
+}
+
+.store-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  color: #007bff;
+}
+
+.game-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.game-item:hover {
+  transform: scale(1.05);
+}
+
+.game-thumb {
+  max-width: 100px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.game-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.normal-price {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.game-link {
+  color: #1df600;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.game-link:hover {
+  color: #aaf0a0;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
