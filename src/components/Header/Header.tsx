@@ -1,9 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { getAuth, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+
+import "../../css/Header.css"; // Archivo CSS para los estilos del Header
 
 const Header: React.FC = () => {
   const { t } = useTranslation();
+  const auth = getAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        navigate("/"); // Redireccionar a la página de inicio de sesión después de cerrar sesión
+      })
+      .catch((error) => {
+        console.error("Error al cerrar sesión:", error);
+      });
+  };
 
   return (
     <header>
@@ -22,6 +38,14 @@ const Header: React.FC = () => {
           </li>
           <li>
             <Link to="/full-list">{t("fullList")}</Link>
+          </li>
+          <li>
+            <Link to="/search-games">{t("searchDetailsGames")}</Link>
+          </li>
+          <li>
+            <button onClick={handleSignOut} className="nav-link-button">
+              {t("signOut")}
+            </button>
           </li>
         </ul>
       </nav>
