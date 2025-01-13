@@ -40,6 +40,15 @@ npm run dev: Inicia el servidor de desarrollo con Vite.
 npm run build: Genera una versión optimizada para producción.
 npm run preview: Previsualiza la aplicación en modo producción localmente.
 
+Integración con CheapShark API
+Este proyecto utiliza la CheapShark API para obtener información sobre ofertas de videojuegos disponibles en diferentes plataformas. La API permite realizar consultas de datos en tiempo real, como precios, títulos, plataformas y más, para mostrar información actualizada a los usuarios.
+
+La CheapShark API es un servicio gratuito que proporciona datos sobre videojuegos en oferta, incluyendo:
+
+Tiendas participantes (Steam, Epic Games, entre otras).
+Precios actuales y descuentos.
+Detalles como ID, título, y enlaces para compra directa.
+
 Implementación de Traducciones con i18next
 Este proyecto utiliza i18next para manejar la internacionalización y traducción de textos en la aplicación web. A continuación, se describe la configuración y utilización de esta funcionalidad.
 
